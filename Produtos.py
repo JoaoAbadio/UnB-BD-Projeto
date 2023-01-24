@@ -1,12 +1,11 @@
 import datetime
 import warnings
 
-import Auxiliar
 
 tam = 100
 
 
-# Tesoudo Direto.
+# Tesouro Direto.
 
 class TesouroDireto:
 	def __init__(self):
@@ -17,7 +16,7 @@ class TesouroDireto:
 		self.__juros_anual = 0
 		self.__valor = 0
 
-	# Getters e setters de nome.
+	# Getter e setter de nome.
 
 	@property
 	def nome(self):
@@ -36,7 +35,7 @@ class TesouroDireto:
 
 		return False
 
-	# Getters e setters de data_vencimento.
+	# Getter e setter de data_vencimento.
 
 	@property
 	def data_vencimento(self):
@@ -48,11 +47,11 @@ class TesouroDireto:
 			self.__data_vencimento = data_vencimento
 			return True
 		else:
-			warnings.warn("data_vencimento aceita apenas tipo data.")
+			warnings.warn("data_vencimento aceita apenas tipo datatime.datetime.")
 
 		return False
 
-	# Getters e setters de indexador.
+	# Getter e setter de indexador.
 
 	@property
 	def indexador(self):
@@ -71,7 +70,7 @@ class TesouroDireto:
 
 		return False
 
-	# Getters e setters de juros_mensal.
+	# Getter e setter de juros_mensal.
 
 	@property
 	def juros_mensal(self):
@@ -90,7 +89,7 @@ class TesouroDireto:
 
 		return False
 
-	# Getters e setters de juros_anual.
+	# Getter e setter de juros_anual.
 
 	@property
 	def juros_anual(self):
@@ -109,7 +108,7 @@ class TesouroDireto:
 
 		return False
 
-	# Getters e setters de valor.
+	# Getter e setter de valor.
 
 	@property
 	def valor(self):
@@ -128,7 +127,6 @@ class TesouroDireto:
 
 		return False
 
-
 # Fundo de Investimento
 
 class FundoInvestimento:
@@ -139,7 +137,7 @@ class FundoInvestimento:
 		self.__valor_minimo = 0
 		self.__data_resgate = 0
 
-	# Getters e setters de classe.
+	# Getter e setter de classe.
 
 	@property
 	def classe(self):
@@ -158,7 +156,7 @@ class FundoInvestimento:
 
 		return False
 	
-	# Getters e setters de prazo_resgate.
+	# Getter e setter de prazo_resgate.
 
 	@property
 	def prazo_resgate(self):
@@ -176,7 +174,7 @@ class FundoInvestimento:
 		else:
 			warnings.warn("prazo_resgate deve ser float.")
 
-	# Getters e setters de nome.
+	# Getter e setter de nome.
 
 	@property
 	def nome(self):
@@ -195,7 +193,7 @@ class FundoInvestimento:
 
 		return False
 
-	# Getters e setters de valor_minimo.
+	# Getter e setter de valor_minimo.
 
 	@property
 	def valor_minimo(self):
@@ -214,7 +212,7 @@ class FundoInvestimento:
 
 		return False
 
-	# Getters e setters de data_resgate.
+	# Getter e setter de data_resgate.
 
 	@property
 	def data_resgate(self):
@@ -230,5 +228,125 @@ class FundoInvestimento:
 	
 		return False
 
+# Renda Fixa e Variavel
 
+class RendaFixaVariavel:
+	def __init__(self):
+		self.__classe = ""
+		self.__nome_empresa = ""
+		self.__prazo_vencimento = 0
+		self.__taxa_remuneracao = 0
+		self.__horario_limite = 0
+		self.__valor_minimo = 0
+
+	# Getter e setter de classe.
+
+	@property
+	def classe(self):
+		return self.__classe
+
+	@classe.setter
+	def classe(self, classe):
+		if isinstance(classe, str):
+			if classe == "PL" or classe == "ABC" or classe == "EDC" or classe == "ALF"	\
+			   or classe == "BLC":
+				self.__classe = classe
+				return True
+			else:
+				warnings.warn("classe deve ser: PL, ABC, EDC, ALF ou BLC.")
+		else:
+			warnings.warn("classe deve ser string.")
+
+		return False
+
+	# Getter e setter de nome_empresa.
+
+	@property
+	def nome_empresa(self):
+		return self.__nome_empresa
+
+	@nome_empresa.setter
+	def nome_empresa(self, nome_empresa):
+		if isinstance(nome_empresa, str):
+			if len(nome_empresa) <= tam:
+				self.__nome_empresa = nome_empresa
+				return True
+			else:
+				warnings.warn("nome_empresa deve conter ate 100 caracteres.")
+		else:
+			warnings.warn("nome_empresa deve ser string.")
+
+		return False
+
+	# Getter e setter de prazo_vencimento.
+
+	@property
+	def prazo_vencimento(self):
+		return self.__prazo_vencimento
+
+	@prazo_vencimento.setter
+	def prazo_vencimento(self, prazo_vencimento):
+		if isinstance(prazo_vencimento, int):
+			if prazo_vencimento >= 0:
+				self.__prazo_vencimento = prazo_vencimento
+				return True
+			else:
+				warnings.warn("prazo_investimento deve ser maior ou igual a zero.")
+		else:
+			warnings.warn("prazo_investimento deve ser int.")
+
+		return False
+
+	# Getter e setter de taxa_remuneracao.
+	@property
+	def taxa_remuneracao(self):
+		return self.__taxa_remuneracao
+
+	@taxa_remuneracao.setter
+	def taxa_remuneracao(self, taxa_remuneracao):
+		if isinstance(taxa_remuneracao, float):
+			if taxa_remuneracao >= 0:
+				self.__taxa_remuneracao = taxa_remuneracao
+				return True
+			else:
+				warnings.warn("taxa_remuneracao deve ser maior ou igual a zero.")
+		else:
+			warnings.warn("taxa_remuneracao deve ser float")
+
+		return False
+	
+	# Getter e setter de horario_limite.
+
+	@property
+	def horario_limite(self):
+		return self.__horario_limite
+
+	@horario_limite.setter
+	def horario_limite(self, horario_limite):
+		if isinstance(horario_limite, datetime.datetime):
+			self.__horario_limite = horario_limite
+			return True
+		else:
+			warnings.warn("horario_limite deve ser do tipo datetime.datetime")
+
+		return False
+	
+	# Getter e setter de valor_minimo.
+
+	@property
+	def valor_minimo(self):
+		return self.__valor_minimo
+
+	@valor_minimo.setter
+	def valor_minimo(self, valor_minimo):
+		if isinstance(valor_minimo, float):
+			if valor_minimo >= 0:
+				self.__valor_minimo = valor_minimo
+				return True
+			else:
+				warnings.warn("valor_minimo deve ser maior ou igual a zero.")
+		else:
+			warnings.warn("valor_minimo deve ser do tipo float.")
+		
+		return False
 	
