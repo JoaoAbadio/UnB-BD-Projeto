@@ -4,10 +4,7 @@ import Produtos
 
 
 if __name__ == '__main__':
-	tesouro_direto = Produtos.TesouroDireto()
 	
-	tesouro_direto.indexador = 2
-	print(tesouro_direto.indexador)
 
 	"""
 		Data
