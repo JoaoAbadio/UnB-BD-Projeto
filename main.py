@@ -1,14 +1,17 @@
 import datetime
 
 import Produtos
+import Pessoal
 
+
+# main esta sendo usada, no momento, para fazer testes nas classes criadas.
 
 if __name__ == '__main__':
 
-	teste = Produtos.RendaFixaVariavel()
+	u1 = Pessoal.Usuario()
+	u1.sexo = "M"
+	print(u1.sexo)
 
-	teste.valor_minimo = 150.0
-	print(teste.valor_minimo)
 
 	"""
 		Data

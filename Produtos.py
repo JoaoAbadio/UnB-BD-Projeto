@@ -8,13 +8,24 @@ tam = 100
 # Tesouro Direto.
 
 class TesouroDireto:
+	id_tesouro_direto = 0
+
 	def __init__(self):
+		TesouroDireto.id_tesouro_direto += 1
+
+		self.__id = TesouroDireto.id_tesouro_direto
 		self.__nome = ""
 		self.__data_vencimento = ""
 		self.__indexador = ""
 		self.__juros_mensal = 0
 		self.__juros_anual = 0
 		self.__valor = 0
+
+	# Getter de id.
+
+	@property
+	def id(self):
+		return self.__id
 
 	# Getter e setter de nome.
 
@@ -130,12 +141,23 @@ class TesouroDireto:
 # Fundo de Investimento
 
 class FundoInvestimento:
+	id_fundo_investimento = 0
+
 	def __init__(self):
+		FundoInvestimento.id_fundo_investimento += 1
+
+		self.__id = FundoInvestimento.id_fundo_investimento
 		self.__classe = ""
 		self.__prazo_resgate = 0
 		self.__nome = ""
 		self.__valor_minimo = 0
 		self.__data_resgate = 0
+
+	# Getter de id.
+
+	@property
+	def id(self):
+		return self.__id
 
 	# Getter e setter de classe.
 
@@ -231,13 +253,24 @@ class FundoInvestimento:
 # Renda Fixa e Variavel
 
 class RendaFixaVariavel:
+	id_renda_fixa_variavel = 0
+
 	def __init__(self):
+		RendaFixaVariavel.id_renda_fixa_variavel += 1
+
+		self.__id = RendaFixaVariavel.id_renda_fixa_variavel
 		self.__classe = ""
 		self.__nome_empresa = ""
 		self.__prazo_vencimento = 0
 		self.__taxa_remuneracao = 0
 		self.__horario_limite = 0
 		self.__valor_minimo = 0
+
+	# Getter de id.
+
+	@property
+	def id(self):
+		return self.__id
 
 	# Getter e setter de classe.
 
