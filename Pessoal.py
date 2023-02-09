@@ -4,10 +4,10 @@ import warnings
 tam = 60
 tam_cpf = 14
 tam_identidade = 10
-tam_casa_ou_apt = 1001
+tam_numero = 1001
 tam_cep = 8
 tam_telefone = 14
-tam_agencia = 6
+tam_codigo_agencia = 6
 tam_conta_corrente = 7
 
 # Usuario
@@ -32,22 +32,39 @@ class Usuario:
 		self.__cidade = ""		
 		self.__bairro = ""		
 		self.__rua = ""			
-		self.__casa_ou_apt = ""	
+		self.__numero = ""	
 		self.__cep = ""			
 		self.__uf = ""			
-		self.__telefone = []	
+		self.__telefones = []	
 		self.__email = ""		
 		self.__pais = ""
 		self.__escolaridade = ""
 		self.__cargo = ""
 		self.__id_bancario = ""
-		self.__agencia = ""
+		self.__codigo_agencia = ""
 		self.__conta_corrente = ""
 		self.__senha = ""
 
 		self.__data_nascimento = ""
 		self.__renda_mensal = 0.0
 		
+	def cadastrar(self, informacoes):
+		self.__identidade = informacoes['identidade']
+		self.__nome = informacoes['nome']
+		self.__data_nascimento= informacoes['data_nascimento']
+		self.__renda_mensal = informacoes['renda_mensal']
+		self.__cidade = informacoes['cidade']
+		self.__bairro = informacoes['bairro']
+		self.__rua = informacoes['rua']
+		self.__numero = informacoes['numero']
+		self.__telefones.append(informacoes['telefones'])
+		self.__cep = informacoes['cep']
+		self.__cpf = informacoes['cpf']
+		self.__senha = informacoes['senha']
+		self.__id_bancario = informacoes['id_bancario']
+		self.__codigo_agencia = informacoes['codigo_agencia']
+		self.__conta_corrente = informacoes['conta_corrente']
+
 	# Getter de id.
 	@property
 	def id(self):
@@ -244,22 +261,22 @@ class Usuario:
 
 		return False
 
-	# Getter e setter de casa_ou_apt.
+	# Getter e setter de numero.
 
 	@property
-	def casa_ou_apt(self):
-		return self.__casa_ou_apt
+	def numero(self):
+		return self.__numero
 
-	@casa_ou_apt.setter
-	def casa_ou_apt(self, casa_ou_apt):
-		if isinstance(casa_ou_apt, int):
-			if casa_ou_apt in range(1, tam_casa_ou_apt):
-				self.__casa_ou_apt = casa_ou_apt
+	@numero.setter
+	def numero(self, numero):
+		if isinstance(numero, int):
+			if numero in range(1, tam_numero):
+				self.__numero = numero
 				return True
 			else:
-				warnings.warn("casa_ou_apt deve ser entre 1 e 1000.")
+				warnings.warn("numero deve ser entre 1 e 1000.")
 		else:
-			warnings.warn("casa_ou_apt aceita apenas tipo int.")
+			warnings.warn("numero aceita apenas tipo int.")
 
 		return False
 
@@ -415,22 +432,22 @@ class Usuario:
 			warnings.warn("id_bancario aceita apenas tipo int.")
 		return False
 
-	# Getter e setter de agencia.
+	# Getter e setter de codigo_agencia.
 
 	@property
-	def agencia(self):
-		return self.__agencia
+	def codigo_agencia(self):
+		return self.__codigo_agencia
 
-	@agencia.setter
-	def agencia(self, agencia):
-		if isinstance(agencia, str):
-			if len(agencia) == tam:
-				self.__agencia = agencia
+	@codigo_agencia.setter
+	def codigo_agencia(self, codigo_agencia):
+		if isinstance(codigo_agencia, str):
+			if len(codigo_agencia) == tam:
+				self.__codigo_agencia = codigo_agencia
 				return True
 			else:
-				warnings.warn("agencia ser ter ate " + tam_agencia + " caracteres.")
+				warnings.warn("codigo_agencia ser ter ate " + tam_codigo_agencia + " caracteres.")
 		else:
-			warnings.warn("agencia aceita apenas tipo string.")
+			warnings.warn("codigo_agencia aceita apenas tipo string.")
 
 		return False
 
@@ -469,6 +486,25 @@ class Usuario:
 				warnings.warn("senha ser ter ate " + tam + " caracteres.")
 		else:
 			warnings.warn("senha aceita apenas tipo string.")
+
+		return False
+
+	# Getter e setter de data_nascimento.
+
+	@property
+	def data_nascimento(self):
+		return self.__data_nascimento
+
+	@data_nascimento.setter
+	def data_nascimento(self, data_nascimento):
+		if isinstance(data_nascimento, str):
+			if len(data_nascimento) == tam:
+				self.__data_nascimento = data_nascimento
+				return True
+			else:
+				warnings.warn("data_nascimento ser ter ate " + tam + " caracteres.")
+		else:
+			warnings.warn("data_nascimento aceita apenas tipo string.")
 
 		return False
 
